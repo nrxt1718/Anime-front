@@ -1,9 +1,9 @@
 <div>
-  @for (a of animes; track a.id) {
+  @for (a of animes(); track a.id) {
     <div>
       <h2>{{ a.titre }}</h2>
 
-      <a [routerLink]="['/anime', a.id]">
+      <a [routerLink]="['detail', a.id]">
         <img [src]="a.urlImage" alt="Affiche" width="100">
       </a>
 
