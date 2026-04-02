@@ -1,8 +1,13 @@
 <div>
   <h1>{{ anime().titre }}</h1>
-
+  <iframe
+    [src]="trailerUrl()"
+    width="560"
+    height="315"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
   <img [src]="anime().urlImage" width="300">
-
     <p><strong>Année :</strong> {{ anime().year }}</p>
   <p><strong>Description :</strong></p>
   <p>{{ anime().description }}</p>
