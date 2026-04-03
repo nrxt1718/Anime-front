@@ -1,26 +1,27 @@
 import {Component, inject, OnInit, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {RouterLink} from '@angular/router';
-import { ButtonModule } from 'primeng/button';
-import { CarouselModule } from 'primeng/carousel';
-import { TagModule } from 'primeng/tag';
-import {NgStyle} from '@angular/common';
+import {ButtonModule} from 'primeng/button';
+import {CarouselModule} from 'primeng/carousel';
+import {TagModule} from 'primeng/tag';
+
 @Component({
   selector: 'app-anime-detail',
   imports: [
-    RouterLink,
-   ButtonModule, CarouselModule, TagModule, NgStyle,
+    ButtonModule, CarouselModule, TagModule,
   ],
   templateUrl: './anime-list.html',
+  standalone: true,
 })
 export class AnimeList implements OnInit {
   private http = inject(HttpClient);
   animes = signal<any[]>([]);
   responsiveOptions: any[] | undefined;
+
   ngOnInit() {
-    this.http.get<any[]>('http://localhost:5042/api/anime').subscribe((result) => {
-      this.animes.set(result);
-    });this.responsiveOptions = [
+    this.http.get<{ data: any[] }>('https://api.jikan.moe/v4/top/anime?type=tv').subscribe((result) => {
+      this.animes.set(result.data);
+    });
+    this.responsiveOptions = [
       {
         breakpoint: '1400px',
         numVisible: 2,

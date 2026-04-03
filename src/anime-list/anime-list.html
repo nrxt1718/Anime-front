@@ -1,32 +1,23 @@
-<div>   <div class="card">
-  <p-carousel [value]="animes()" [numVisible]="3" [numScroll]="3" [circular]="false" [responsiveOptions]="responsiveOptions">
-    <ng-template let-a #item>
-      <div class="border border-surface rounded-border m-2 p-4">
-        <div class="mb-4">
-          <div class="relative mx-auto">
-            <img src="a.urlImage" [alt]="a.titre" class="w-full rounded-border" />
+<div>
+  <div class="card">
+    <p-carousel [value]="animes()" [numVisible]="3" [numScroll]="3" [circular]="false"
+                [responsiveOptions]="responsiveOptions">
+      <ng-template let-a #item>
+        <div class="border border-surface rounded-border m-2 p-4">
+          <div class="mb-4">
+            <div class="relative mx-auto">
+              <img [src]="a.images.jpg.large_image_url" [alt]="a.title" class="w-full rounded-border"/>
+            </div>
+          </div>
+          <div class="mb-4 font-medium">{{ a.title }}</div>
+          <div class="flex justify-between items-center">
+            <span>
+            <p-button icon="pi pi-heart" severity="secondary" [outlined]="true"/>
+          </span>
           </div>
         </div>
-        <div class="mb-4 font-medium">{{ a.titre }}</div>
-        <div class="flex justify-between items-center">
-          <div class="mt-0 font-semibold text-xl">{{ '$' + a.here }}</div>
-          <span>
-            <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
-          </span>
-        </div>
-      </div>
-    </ng-template>
-  </p-carousel>
-</div>
-<!--  @for (a of animes(); track a.id) {-->
-<!--    <div>-->
-<!--      <h2>{{ a.titre }}</h2>-->
-<!--      <p-button label="Check" />-->
-<!--      <a [routerLink]="['detail', a.id]">-->
-<!--        <img [src]="a.urlImage" alt="Affiche" width="100">-->
-<!--      </a>-->
-
-<!--    </div>-->
-<!--  }-->
+      </ng-template>
+    </p-carousel>
+  </div>
 </div>
 
