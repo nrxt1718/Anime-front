@@ -6,7 +6,10 @@
         <div class="border border-surface rounded-border m-2 p-4">
           <div class="mb-4">
             <div class="relative mx-auto">
-              <img [src]="a.images.jpg.large_image_url" [alt]="a.title" class="w-full rounded-border"/>
+
+              <a [routerLink]="['detail', a.mal_id]">
+                <img [src]="a.images.jpg.large_image_url" [alt]="a.title" class="w-full rounded-border"/>
+              </a>
             </div>
           </div>
           <div class="mb-4 font-medium">{{ a.title }}</div>
@@ -20,4 +23,3 @@
     </p-carousel>
   </div>
 </div>
-

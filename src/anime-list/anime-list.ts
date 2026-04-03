@@ -3,11 +3,12 @@ import {HttpClient} from '@angular/common/http';
 import {ButtonModule} from 'primeng/button';
 import {CarouselModule} from 'primeng/carousel';
 import {TagModule} from 'primeng/tag';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-anime-detail',
   imports: [
-    ButtonModule, CarouselModule, TagModule,
+    ButtonModule, CarouselModule, TagModule, RouterLink,
   ],
   templateUrl: './anime-list.html',
   standalone: true,
@@ -18,7 +19,7 @@ export class AnimeList implements OnInit {
   responsiveOptions: any[] | undefined;
 
   ngOnInit() {
-    this.http.get<{ data: any[] }>('https://api.jikan.moe/v4/top/anime?type=tv').subscribe((result) => {
+    this.http.get<{ data: any[] }>('').subscribe((result) => {
       this.animes.set(result.data);
     });
     this.responsiveOptions = [

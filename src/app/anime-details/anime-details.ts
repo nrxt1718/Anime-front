@@ -17,15 +17,15 @@ export class AnimeDetails implements OnInit {
   private sanitizer = inject(DomSanitizer);
   id: string | null = null;
   anime = signal<any>({ });
-  trailerUrl = computed<SafeResourceUrl | null>(() => {     const id = this.anime()?.urlVideo; return id ? this.sanitizer.bypassSecurityTrustResourceUrl(id) : null;});
+  trailerUrl = computed<SafeResourceUrl | null>(() => {     const id = this.anime()?.trailer.embed_url; return id ? this.sanitizer.bypassSecurityTrustResourceUrl(id) : null;});
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log('ID récupéré :', this.id);
 
     if (this.id) {
-      this.http.get<any>(`http://localhost:5042/api/anime/${this.id}`)
-        .subscribe((data) => {
-          this.anime.set(data);
+      this.http.get<any>(`https://api.jikan.moe/v4/anime/${this.id}`)
+        .subscribe((response) => {
+          this.anime.set(response.data);
         });
     }
   }
