@@ -1,4 +1,4 @@
-import {Component, inject, Injectable, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {RouterLink} from '@angular/router';
 import { ButtonModule } from 'primeng/button';
